@@ -1,4 +1,4 @@
-:: Windows 11
+:: Windows 10
 
 @echo off
 :: date
@@ -8,7 +8,7 @@ for /f "tokens=1-3 delims=/" %%a in ("%DATE%") do (
     set YYYY=%%c
 )
 :: time
-for /f "tokens=1-2 delims=:" %%a in ("%TIME%") do (
+for /f "tokens=1-2 delims=.," %%a in ("%TIME%") do (
     set HR=%%a
     set MN=%%b
 )
@@ -20,6 +20,7 @@ if %HR% LSS 10 (
 )
 
 set Timestamp=%YYYY%-%MM%-%DD%_%HR%%MN%
+echo %Timestamp%
 
 echo Compressing...
 "C:\Program Files\7-Zip\7z.exe" a "SaSaLeLe_SMP2_BU_%Timestamp%" "SaSaLeLe_SMP2"
